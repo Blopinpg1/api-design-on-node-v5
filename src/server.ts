@@ -21,7 +21,7 @@ app.use(
 )
 
 app.get('/health', (req, res) => {
-  //   res.json({ message: 'hello', fuck: 'you' }).status(200)
+  //   res.json({ message: 'hello', : 'you' }).status(200)
   res.send('<h1>HELLO</h>')
 })
 
