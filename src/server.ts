@@ -7,6 +7,8 @@ import cors from 'cors'
 import morgan from 'morgan'
 import helmet from 'helmet'
 import { isTest } from '../env.ts'
+import { errorHandler } from './middleware/errorHandler.ts'
+import { notFound } from './middleware/404errorHandler.ts'
 
 const app = express()
 
@@ -108,6 +110,19 @@ app.post('/cake', (req, res) => {
 app.use('/api/auth', authRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/habits', habitRoutes)
+// More routes (tags, stats, etc.) can be added here
+
+app.use(notFound)
+
+/** * ---------------------------------------------------------
+ * Error Handling Middleware
+ * ---------------------------------------------------------
+ * Catches errors thrown in route handlers and middlewares.
+ * Sends structured JSON error responses to clients.
+ */
+
+//a special middleware to catch all requests that don't match any defined routes
+app.use(errorHandler)
 
 /**
  * Exporting the app
