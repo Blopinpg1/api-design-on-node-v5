@@ -24,7 +24,7 @@ export default defineConfig({
      *  - Seeding test data
      *  - Mocking external services
      */
-    globalSetup: ['./tests/setup/globalSetup.ts'],
+    globalSetup: './src/tests/setup/globalSetup.ts',
 
     /**
      * Automatically clean up mocks after each test.

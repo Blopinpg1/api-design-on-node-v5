@@ -1,6 +1,9 @@
 {
   "name": "api-design-v5",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=24.3.0"
+  },
   "description": "Habit Tracker API for Node.js course",
   "main": "src/index.ts",
   "type": "module",
