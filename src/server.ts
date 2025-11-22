@@ -78,7 +78,7 @@ app.use(
  * to verify that the server is alive.
  */
 app.get('/health', (req, res) => {
-  res.send('<h1>HELLO</h1>')
+  res.send('ok')
 })
 
 /**
