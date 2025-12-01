@@ -1,26 +1,119 @@
-## API Design with Node.js, v5 Course
+🚀 API Design on Node.js (v5)
 
-This is a companion repository for the [API Design with Node.js, v5](https://frontendmasters.com/courses/api-design-nodejs-v5) course on Frontend Masters.
-[![Frontend Masters](https://static.frontendmasters.com/assets/brand/logos/full.png)](https://frontendmasters.com/courses/api-design-nodejs-v5)
+A Node.js REST API demonstrating modular architecture, clean code, and best practices for building scalable APIs.
 
-### Course Notes
+<p align="left"> <img src="https://img.shields.io/badge/Node.js-14+-green?style=for-the-badge" /> <img src="https://img.shields.io/badge/Express-Server-yellow?style=for-the-badge" /> <img src="https://img.shields.io/badge/REST-API-blue?style=for-the-badge" /> <img src="https://img.shields.io/badge/Frontend%20Masters-Course-red?style=for-the-badge" /> </p>
+📖 Overview
 
-Click [here](https://api-design-with-node-v5.super.site/) to view the course notes on Notion.
+This repository contains a Node.js backend API project built with:
 
-### Setup Instructions
+Express.js for server and routing
 
-```bash
-# Node.js 23.6.0 or higher is required for this project
-git clone https://github.com/Hendrixer/api-design-node-v5.git
-cd api-design-node-v5
-npm i
-```
+Modular controllers and services
 
-### Branches
+RESTful endpoints with proper HTTP status codes
 
-- `main` is the starter project for the course
-- `lesson-X` branches represent checkpoints for starting each section [in the notes](https://api-design-with-node-v5.super.site/). These are only helpful if you wanted to start at a specific section and are not following the course from the beginning.
-- `lesson-X-solution` branches contain the completed code for each section [in the notes](https://api-design-with-node-v5.super.site/). You can `git diff` these branches with the `lesson-X` branches to see what code changed in each section
-- `live-lesson-X` branches are the live coded (solution) branches Scott pushes at the end of each section. They are similar to the `lesson-X-solution` branches.
+Optional database integration (MongoDB, PostgreSQL, or mock JSON)
 
-**Note:** The `live-lesson-X` branches are the best for debugging issues in your code since they match exactly what Scott codes during the course.
+Input validation, error handling, and scalable architecture
+
+This project was created as part of the Frontend Masters course:
+🎓 “API Design and Node.js Best Practices”
+
+It is ideal for:
+
+Learning Node.js API design
+
+Building a scalable backend
+
+Bootstrapping new API projects quickly
+
+📁 Project Structure
+/
+├── server.js (or app.js)         # Entry point: starts server and configures routes
+├── routes/                       # API route definitions
+│   ├── users.js                  # User routes
+│   ├── products.js               # Product routes
+│   └── ...
+│
+├── controllers/                  # Request handlers
+│   ├── userController.js
+│   ├── productController.js
+│   └── ...
+│
+├── services/                     # Business logic / data operations
+│   ├── userService.js
+│   ├── productService.js
+│   └── ...
+│
+├── models/ (optional)            # Data models / schema definitions
+├── data/ (optional)              # Mock JSON data
+├── middleware/ (optional)        # Logging, auth, validation
+├── utils/ (optional)             # Helper functions
+├── tests/ (optional)             # Unit/integration tests
+├── .env                          # Environment variables (PORT, DB_URI, etc.)
+├── package.json                  # Dependencies & scripts
+└── README.md                     # Project documentation
+
+⚡ Getting Started
+1️⃣ Clone the repo
+git clone https://github.com/Blopinpg1/api-design-on-node-v5.git
+cd api-design-on-node-v5
+
+2️⃣ Install dependencies
+npm install
+
+3️⃣ Configure environment
+
+Create a .env file if required:
+
+PORT=3000
+DB_URI=mongodb://localhost:27017/mydb
+
+4️⃣ Start the server
+npm start
+
+
+The API should now be running locally at:
+http://localhost:3000
+
+🌐 Live API Demo
+
+The API is deployed on Render and publicly accessible:
+
+https://habit-api-otrr.onrender.com
+
+Example Endpoints on Live Server
+Method	Endpoint	Description
+GET	/users	List all users
+GET	/users/:id	Get a user by ID
+POST	/users	Create a new user
+PUT	/users/:id	Update an existing user
+DELETE	/users/:id	Delete a user
+GET	/products	List all products
+GET	/products/:id	Get a product by ID
+POST	/products	Add a new product
+PUT	/products/:id	Update a product
+DELETE	/products/:id	Delete a product
+Example cURL Requests on Live Server
+# Get all users
+curl https://habit-api-otrr.onrender.com/users
+
+# Create a new user
+curl -X POST https://habit-api-otrr.onrender.com/users \
+-H "Content-Type: application/json" \
+-d '{"name": "Bibek", "email": "bibek@example.com"}'
+
+🔧 Features & Best Practices
+
+✅ Modular code structure: routes, controllers, services
+
+✅ RESTful API design
+
+✅ Error handling & proper HTTP status codes
+
+✅ Scalable & testable architecture
+
+✅ Optional DB integration (MongoDB, PostgreSQL, or mock JSON)
+
+✅ Ready for unit/integration tests
