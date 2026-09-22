@@ -1,119 +1,118 @@
-🚀 API Design on Node.js (v5)
+# Habit Tracker API (Node.js + TypeScript)
 
-A Node.js REST API demonstrating modular architecture, clean code, and best practices for building scalable APIs.
+A production-style REST API for habit tracking, built as part of an API design learning project.  
+The project focuses on modular architecture, validation, authentication, and clean backend structure.
 
-<p align="left"> <img src="https://img.shields.io/badge/Node.js-14+-green?style=for-the-badge" /> <img src="https://img.shields.io/badge/Express-Server-yellow?style=for-the-badge" /> <img src="https://img.shields.io/badge/REST-API-blue?style=for-the-badge" /> <img src="https://img.shields.io/badge/Frontend%20Masters-Course-red?style=for-the-badge" /> </p>
-📖 Overview
+## Tech Stack
 
-This repository contains a Node.js backend API project built with:
+- Node.js (ESM)
+- Express 5
+- TypeScript
+- PostgreSQL
+- Drizzle ORM + Drizzle Kit
+- Zod (request validation)
+- JWT (authentication)
+- Vitest + Supertest (testing)
 
-Express.js for server and routing
+## Features
 
-Modular controllers and services
+- User registration and login
+- JWT-protected routes
+- User profile management
+- Habit CRUD operations
+- Input validation with Zod
+- Centralized error handling
+- Database migrations and seeding support
 
-RESTful endpoints with proper HTTP status codes
+## Project Structure
 
-Optional database integration (MongoDB, PostgreSQL, or mock JSON)
+```text
+src/
+  controllers/    # Route handlers
+  db/             # Drizzle schema, migrations helpers, seed
+  middleware/     # Auth, validation, error handlers
+  routes/         # API route modules
+  tests/          # Test suites
+  utils/          # Shared utility functions
+  server.ts       # Express app setup
+  index.ts        # Server startup entrypoint
+```
 
-Input validation, error handling, and scalable architecture
+## Prerequisites
 
-This project was created as part of the Frontend Masters course:
-🎓 “API Design and Node.js Best Practices”
+- Node.js `>=24.3.0`
+- PostgreSQL running locally or remotely
 
-It is ideal for:
+## Getting Started
 
-Learning Node.js API design
+1. **Clone and install**
 
-Building a scalable backend
+   ```bash
+   git clone https://github.com/Blopinpg1/api-design-on-node-v5.git
+   cd api-design-on-node-v5
+   npm install
+   ```
 
-Bootstrapping new API projects quickly
+2. **Configure environment variables**
 
-📁 Project Structure
-/
-├── server.js (or app.js)         # Entry point: starts server and configures routes
-├── routes/                       # API route definitions
-│   ├── users.js                  # User routes
-│   ├── products.js               # Product routes
-│   └── ...
-│
-├── controllers/                  # Request handlers
-│   ├── userController.js
-│   ├── productController.js
-│   └── ...
-│
-├── services/                     # Business logic / data operations
-│   ├── userService.js
-│   ├── productService.js
-│   └── ...
-│
-├── models/ (optional)            # Data models / schema definitions
-├── data/ (optional)              # Mock JSON data
-├── middleware/ (optional)        # Logging, auth, validation
-├── utils/ (optional)             # Helper functions
-├── tests/ (optional)             # Unit/integration tests
-├── .env                          # Environment variables (PORT, DB_URI, etc.)
-├── package.json                  # Dependencies & scripts
-└── README.md                     # Project documentation
+   ```bash
+   cp .env.example .env
+   ```
 
-⚡ Getting Started
-1️⃣ Clone the repo
-git clone https://github.com/Blopinpg1/api-design-on-node-v5.git
-cd api-design-on-node-v5
+   Update `.env` values (especially `DATABASE_URL` and `JWT_SECRET`).
 
-2️⃣ Install dependencies
-npm install
+3. **Run database setup**
 
-3️⃣ Configure environment
+   ```bash
+   npm run db:push
+   npm run db:seed
+   ```
 
-Create a .env file if required:
+4. **Start the API**
 
-PORT=3000
-DB_URI=mongodb://localhost:27017/mydb
+   ```bash
+   npm run dev
+   ```
 
-4️⃣ Start the server
-npm start
+   Server runs on `http://localhost:3000` by default.
 
+## API Base URL
 
-The API should now be running locally at:
-http://localhost:3000
+- Local: `http://localhost:3000/api`
 
-🌐 Live API Demo
+## Main Endpoints
 
-The API is deployed on Render and publicly accessible:
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+- `GET /api/users/profile`
+- `PUT /api/users/profile`
+- `POST /api/users/change-password`
+- `GET /api/habits`
+- `POST /api/habits`
+- `GET /api/habits/:id`
+- `PUT /api/habits/:id`
+- `PATCH /api/habits/:id`
+- `DELETE /api/habits/:id`
 
-https://habit-api-otrr.onrender.com
+For detailed request/response examples, see [`API_DOCS.md`](./API_DOCS.md).
 
-Example Endpoints on Live Server
-Method	Endpoint	Description
-GET	/users	List all users
-GET	/users/:id	Get a user by ID
-POST	/users	Create a new user
-PUT	/users/:id	Update an existing user
-DELETE	/users/:id	Delete a user
-GET	/products	List all products
-GET	/products/:id	Get a product by ID
-POST	/products	Add a new product
-PUT	/products/:id	Update a product
-DELETE	/products/:id	Delete a product
-Example cURL Requests on Live Server
-# Get all users
-curl https://habit-api-otrr.onrender.com/users
+## Available Scripts
 
-# Create a new user
-curl -X POST https://habit-api-otrr.onrender.com/users \
--H "Content-Type: application/json" \
--d '{"name": "Bibek", "email": "bibek@example.com"}'
+- `npm run dev` — Start in watch mode
+- `npm start` — Start server
+- `npm test` — Run tests
+- `npm run test:watch` — Run tests in watch mode
+- `npm run test:coverage` — Generate test coverage
+- `npm run db:generate` — Generate Drizzle migrations
+- `npm run db:push` — Push schema to database
+- `npm run db:migrate` — Run migrations
+- `npm run db:studio` — Open Drizzle Studio
+- `npm run db:seed` — Seed database
 
-🔧 Features & Best Practices
+## Health Check
 
-✅ Modular code structure: routes, controllers, services
+- `GET /health` → `ok`
 
-✅ RESTful API design
+## License
 
-✅ Error handling & proper HTTP status codes
-
-✅ Scalable & testable architecture
-
-✅ Optional DB integration (MongoDB, PostgreSQL, or mock JSON)
-
-✅ Ready for unit/integration tests
+This project is licensed under the ISC License.
